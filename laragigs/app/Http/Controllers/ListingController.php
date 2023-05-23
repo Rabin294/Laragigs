@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listing;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -13,7 +14,7 @@ class ListingController extends Controller
 
         return view('listings.index',[
             'heading' => 'Latest Listings',
-            'listings'=> Listing::latest()->filter(request(['tag','search']))->get()
+            'listings'=> Listing::latest()->filter(request(['tag','search']))->paginate(3)
             ]);
     }
     // Show single listing
@@ -36,10 +37,15 @@ class ListingController extends Controller
             'company'=>['required', Rule::unique('listings', 'company')],
             'location'=>'required',
             'website'=>'required',
+            'tags'=>'required',
             'email'=>['required','email'],
             'description'=>'required'
+            
     ]);
-    return redirect('/');
+
+    Listing::create($formFields);
+
+    return redirect('/')->with('message','Listing created successfully!');
 
     }
 }

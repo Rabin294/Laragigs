@@ -18,7 +18,7 @@
                 <input
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
-                    name="company"
+                    name="company" value="{{old('company')}}"
                 />
                 @error('company')
                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -35,6 +35,7 @@
                     class="border border-gray-200 rounded p-2 w-full"
                     name="title"
                     placeholder="Example: Senior Laravel Developer"
+                    value="{{old('title')}}"
                 />
             </div>
                 @error('title')
@@ -51,11 +52,13 @@
                     class="border border-gray-200 rounded p-2 w-full"
                     name="location"
                     placeholder="Example: Remote, Boston MA, etc"
+                    value="{{old('location')}}"
                 />
             </div>
             @error('location')
             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
              @enderror
+
             <div class="mb-6">
                 <label for="email" class="inline-block text-lg mb-2"
                     >Contact Email</label
@@ -64,6 +67,7 @@
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="email"
+                    value="{{old('email')}}"
                 />
             </div>
             @error('email')
@@ -81,6 +85,7 @@
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="website"
+                    value="{{old('website')}}"
                 />
             </div>
             @error('website')
@@ -96,6 +101,7 @@
                     class="border border-gray-200 rounded p-2 w-full"
                     name="tags"
                     placeholder="Example: Laravel, Backend, Postgres, etc"
+                    value="{{old('tags')}}"
                 />
             </div>
             @error('tags')
@@ -127,7 +133,7 @@
                     name="description"
                     rows="10"
                     placeholder="Include tasks, requirements, salary, etc"
-                ></textarea>
+                >{{old('description')}}</textarea>
             </div>
             @error('description')
             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
